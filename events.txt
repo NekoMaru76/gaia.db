@@ -1,0 +1,16 @@
+successDeleteDatabase
+failDeleteDatabase
+successSetKey
+failSetKey
+successGetKey
+failGetKey
+successCreateKey
+failCreateKey
+successDeleteKey
+failDeleteKey
+successCreateUser
+failCreateUser
+successAuth
+failAuth
+successConnect
+failConnect

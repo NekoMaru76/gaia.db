@@ -1,0 +1,23 @@
+{
+  "name": "gaia.db",
+  "version": "1.1.0",
+  "description": "Gaia.DB is an online database package.",
+  "main": "index.js",
+  "scripts": {
+    "runServer": "node test/test-server.js",
+	"runClient": "node test/test-client.js"
+  },
+  "author": "nekomaru76",
+  "license": "ISC",
+  "dependencies": {
+    "@evodev/eventemitter": "^1.0.7",
+    "bson": "^4.2.2",
+    "cuid": "^2.1.8",
+    "deep-equal": "^2.0.5",
+    "del": "^6.0.0",
+    "graceful-fs": "^4.2.4",
+    "lodash": "^4.17.20",
+    "socket.io": "^3.0.5",
+    "socket.io-client": "^3.0.5"
+  }
+}
