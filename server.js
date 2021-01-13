@@ -15,7 +15,7 @@ class Server extends Events {
 		this.connections = {};
 		
 		lock(this, "package_data", {
-			version: "1.0.0"
+			version: "1.2.0"
 		});
 		lock(this, "settings", settings);
 		lock(this, "dbPath", dbPath);

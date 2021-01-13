@@ -4,23 +4,24 @@ Gaia.DB is an online database package.
 
 ## Usage
 ### Server
+
 **Server(path)** [Class]
----
 - path `<string>` {Database folder path}
 
 Create a server.
 
 **Server.setup()** [AsyncFunction]
----
+
 Setup the server.
 
 **Server.run(port)** [AsyncFunction]
----
+
 - port `<number>` {Port you want to listen}
 
 Run the server. Note: Only run this after you run **Server.setup** function.
 
 ### Client
+
 **Client(settings)**
 - settings `<object>` {Client's settings}
   - settings.ip `<string>` {Server's IP you want to connect}
