@@ -1,14 +1,15 @@
 {
   "name": "gaia.db",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Gaia.DB is an online database package.",
   "main": "index.js",
   "scripts": {
     "runServer": "node test/test-server.js",
-	"runClient": "node test/test-client.js"
+    "runClient": "node test/test-client.js",
+    "start": "node index.js"
   },
   "author": "nekomaru76",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@evodev/eventemitter": "^1.0.7",
     "bson": "^4.2.2",
@@ -19,5 +20,28 @@
     "lodash": "^4.17.20",
     "socket.io": "^3.0.5",
     "socket.io-client": "^3.0.5"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoMaru76/gaia.db.git"
+  },
+  "keywords": [
+    "database",
+    "bson",
+    "database-bson",
+    "gaia",
+    "online-database",
+    "online",
+    "websocket",
+    "easy-setup"
+  ],
+  "bugs": {
+    "url": "https://github.com/NekoMaru76/gaia.db/issues"
+  },
+  "homepage": "https://github.com/NekoMaru76/gaia.db#readme"
 }
