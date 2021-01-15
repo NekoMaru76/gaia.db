@@ -14,9 +14,7 @@ class Server extends Events {
 		
 		this.connections = {};
 		
-		lock(this, "package_data", {
-			version: "1.2.0"
-		});
+		lock(this, "package_data", require(`${__dirname}/package-data.json`));
 		lock(this, "settings", settings);
 		lock(this, "dbPath", dbPath);
 	}

@@ -14,3 +14,4 @@ successAuth
 failAuth
 successConnect
 failConnect
+disconnect

@@ -7,19 +7,22 @@ const client = new Client({
 });
 const db = client.Database("TestDB");
 
-client.main();
+client.setup();
 client.on("failAuth", console.log);
 client.on("failConnect", err => {
-	if (err === 'That user is not exist.') client.createUser();
+	if (err === 'That user does not exist.') client.createUser();
 	else console.error(err);
 });
 client.on("successConnect", () => {
 	console.log(`Connected.`);
 	createDB();
 });
-client.on("successAuth", () => console.log(`Authed.`));
+client.on("successAuth", () => {
+  console.log(`Authed.`);
+  client.login();
+});
 client.on("failCreateUser", e => {
-	if (e === "That user is already exist.") client.login();
+	if (e === "That user already exists.") client.login();
 	else console.log(e);
 });
 client.on("successCreateUser", () => {

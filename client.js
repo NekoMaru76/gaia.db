@@ -8,9 +8,7 @@ class Client extends Events {
 		super();
 		
 		this.settings = settings;
-		this.package_data = {
-			version: "1.2.0"
-		};
+		this.package_data = require(`${__dirname}/package-data.json`);
 		this.ws = WSManager.bind(this)(this.settings);
 		
 		this.ws.on("disconnect", () => {
@@ -23,8 +21,8 @@ class Client extends Events {
 	Database(name) {
 		return new DBManager(this, name);
 	}
-	main() {
-		return this.ws.db.auto.bind(this)(...arguments);
+	setup() {
+		return this.ws.db.setup.bind(this)(...arguments);
 	}
 	isAuthed() {
 		if (!this.ws.db) return false;

@@ -22,7 +22,7 @@ Run the server. Note: Only run this after you run **Server.setup** function.
 
 ### Client
 
-**Client(settings)**
+**Client(settings)** [Class]
 - settings `<object>` {Client's settings}
   - settings.ip `<string>` {Server's IP you want to connect}
   - settings.port `<number>` {Server's Port you want to connect}
@@ -31,19 +31,19 @@ Run the server. Note: Only run this after you run **Server.setup** function.
 
 Make client.
 
-**Client.main(callbacks)** [SyncFunction]
+**Client.setup(callbacks)** [SyncFunction]
 - callbacks `<object>`
   - success `<function>` {Success callback}
   - fail `<function>` {Fail callback}
 
-Prepare WebSocket connection then connect to the server.
+Setup WebSocket connection.
 
 **Client.login(callbacks)** [SyncFunction]
 - callbacks `<object>`
   - success `<function>` {Success callback}
   - fail `<function>` {Fail callback}
 
-Connect to the server.
+Connect to the server. Note: Only fire this after `Client.setup(...)`.
 
 **Client.createUser(callbacks)** [SyncFunction]
 - callbacks `<object>`
@@ -184,6 +184,15 @@ Delete a callback from an event. You can check all events in `events.txt`.
 
 ## Example
 Check test folder.
+
+## Bugs
+- -
+
+## Changelogs
+v1.2.2
+- Fixed cannot login to the server after created an account.
+v1.2.3
+- Updated socket.io and socket.io-client to new version.
 
 ## Developers
 - Gaia#7541 [Discord]
