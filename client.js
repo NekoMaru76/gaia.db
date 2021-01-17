@@ -1,4 +1,3 @@
-const fs = require("graceful-fs");
 const Events = require("@evodev/eventemitter");
 const WSManager = require(`${__dirname}/lib/client/webSocketManager`);
 const DBManager = require(`${__dirname}/lib/client/dbManager`);
@@ -33,12 +32,6 @@ class Client extends Events {
 		if (!this.ws.db) return false;
 		
 		return this.ws.db.isConnected;
-	}
-	createUser() {
-		return this.ws.db.createUser.bind(this)(...arguments);
-	}
-	createAccount() {
-		return this.createUser();
 	}
 	createDB() {
 		return this.ws.db.createDatabase.bind(this)(...arguments);

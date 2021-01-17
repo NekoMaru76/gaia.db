@@ -3,16 +3,13 @@ const client = new Client({
 	ip: "http://localhost",
 	port: 3000,
 	username: "root",
-	password: "1234567"
+	password: "kemal123"
 });
 const db = client.Database("TestDB");
 
 client.setup();
 client.on("failAuth", console.log);
-client.on("failConnect", err => {
-	if (err === 'That user does not exist.') client.createUser();
-	else console.error(err);
-});
+client.on("failConnect", console.error);
 client.on("successConnect", () => {
 	console.log(`Connected.`);
 	createDB();
@@ -21,15 +18,6 @@ client.on("successAuth", () => {
   console.log(`Authed.`);
   client.login();
 });
-client.on("failCreateUser", e => {
-	if (e === "That user already exists.") client.login();
-	else console.log(e);
-});
-client.on("successCreateUser", () => {
-	console.log(`Created an account named \`root\`!`);
-	client.login();
-});
-
 const _getKey = (key, path) => new Promise((resolve, reject) => {
 	db.getKey(key, path, {
 		success(data) {
@@ -109,3 +97,5 @@ const deleteDB = () => db.deleteDB({
 		console.log(`Failed to delete TestDB database with error:`, e);
 	}
 });
+
+client.login();

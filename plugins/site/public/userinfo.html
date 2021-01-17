@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Register | Gaia.DB</title>
+    <script type="module">
+      import autoSecretKey from "/assets/sessions/secretKey.js";
+      import privacyPolicy from "/assets/privacy-policy/index.js";
+
+      privacyPolicy();
+      autoSecretKey(async secretKey => {
+        const box = document.querySelector(".box");
+        const user = new URLSearchParams(window.location.search).get("user");
+
+        box.innerHTML = `Loading...`;
+        window.deleteUser = async () => {
+          try {
+            const res = await (await fetch(`/deleteUser`, {
+              method: "POST",
+              body: JSON.stringify({ secretKey, username: user }),
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })).json();
+            
+            if (res.code !== 200) return alert(`Error Code: ${res.code}.`);
+            
+            alert(`Deleted the user.`);
+            
+            window.location.href = `/management-accounts.html`;
+          } catch(e) {
+            alert(e.message);
+          }
+        };
+
+        try {
+          const info = await (await fetch(`/userInfo`, {
+            method: "POST",
+            body: JSON.stringify({ secretKey, username: user }),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })).json();
+
+          if (info.code !== 200)
+            return (box.innerHTML = `Error Code: ${info.code}.`);
+
+          info.data.datas["LOL"] = "ads";
+          box.innerHTML = `<div class="text-center">
+                          <h2>User Info</h2></div><br/>
+                          User: ${user}<br />
+                          Password: <text class="password">${"*".repeat(
+                            info.data.password.length
+                          )}</text>&nbsp;<input class="form-check-input show-password" type="checkbox" id="inlineCheckbox1" value="option1"><br/>
+                          Created At: ${new Date(
+                            info.data.createdAt
+                          ).toString()}<br />
+                          Database: ${
+                            Object.keys(info.data.datas).length
+                              ? Object.keys(info.data.datas)
+                                  .map(
+                                    db =>
+                                      `<button class="db ${
+                                        ["red", "purple", "green", "yellow"][
+                                          Math.floor(Math.random() * 4)
+                                        ]
+                                      } text-center" style="height: auto; width: auto;" onclick="alert('Coming Soon!');">${db}</button>`
+                                  )
+                                  .join(" ")
+                              : "None."
+                          }
+                          <button class="position-absolute bottom-0 end-0 db fw-bold" onclick="deleteUser()" style="background-color: #d9534f;">Delete User</button>`;
+
+          const show_password = document.querySelector(".show-password");
+          const password = document.querySelector(".password");
+
+          show_password.onclick = () =>
+            (password.innerHTML = show_password.checked
+              ? info.data.password
+              : "*".repeat(info.data.password.length));
+        } catch(e) {
+          box.innerHTML = e.message;
+        }
+      }, `/assets/afterVerify/userinfo.html`);
+    </script>
+    <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <style>
+      html,
+      body {
+        background-color: #0c0c0c;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        border-color: rgba(0, 0, 0, 0.75);
+        border-style: solid;
+        border-radius: 10px;
+        padding: 2.5%;
+        color: black;
+      }
+      .db {
+        border-color: rgba(0, 0, 0, 0.75);
+        border-style: solid;
+        border-radius: 1px;
+        padding: 3px;
+        margin: 3px;
+        color: black;
+      }
+      .red {
+        background-color: red;
+      }
+      .green {
+        background-color: green;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .purple {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
