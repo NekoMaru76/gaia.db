@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Gaia.DB</title>
+    <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="/assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="module">
+      import autoSecretKey from "/assets/sessions/secretKey.js";
+      import privacyPolicy from "/assets/privacy-policy/index.js";
+
+      privacyPolicy();
+      autoSecretKey(secretKey => {
+        const username = document.querySelector(".username");
+        const password = document.querySelector(".password");
+        const submit = document.querySelector(".submit-button");
+        
+        submit.onclick = async e => {
+          e.preventDefault();
+          
+          const send = {
+            username: username.value,
+            password: password.value,
+            secretKey
+          };
+          
+          username.value = "";
+          password.value = "";
+          
+          username.disabled = true;
+          password.disabled = true;
+          
+          try {
+            const res = await (await fetch(`/register`, {
+              method: "POST",
+              body: JSON.stringify(send),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })).json();
+            
+            if (res.code !== 200) alert(`Error Code: ${res.code}.`);
+            else alert(`Created the account.`)
+          } catch(e) {
+            alert(`An Error has occured: ${e.message}`);
+          }
+          
+          username.disabled = false;
+          password.disabled = false;
+        };
+      }, `/assets/afterVerify/register.html`);
+    </script>
+  </head>
+  <style>
+    html, body {
+      background-color: #0c0c0c;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <body></body>
+</html>

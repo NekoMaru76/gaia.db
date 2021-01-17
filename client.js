@@ -1,4 +1,3 @@
-const fs = require("graceful-fs");
 const Events = require("@evodev/eventemitter");
 const WSManager = require(`${__dirname}/lib/client/webSocketManager`);
 const DBManager = require(`${__dirname}/lib/client/dbManager`);
@@ -8,9 +7,7 @@ class Client extends Events {
 		super();
 		
 		this.settings = settings;
-		this.package_data = {
-			version: "1.2.0"
-		};
+		this.package_data = require(`${__dirname}/package-data.json`);
 		this.ws = WSManager.bind(this)(this.settings);
 		
 		this.ws.on("disconnect", () => {
@@ -23,8 +20,8 @@ class Client extends Events {
 	Database(name) {
 		return new DBManager(this, name);
 	}
-	main() {
-		return this.ws.db.auto.bind(this)(...arguments);
+	setup() {
+		return this.ws.db.setup.bind(this)(...arguments);
 	}
 	isAuthed() {
 		if (!this.ws.db) return false;
@@ -35,12 +32,6 @@ class Client extends Events {
 		if (!this.ws.db) return false;
 		
 		return this.ws.db.isConnected;
-	}
-	createUser() {
-		return this.ws.db.createUser.bind(this)(...arguments);
-	}
-	createAccount() {
-		return this.createUser();
 	}
 	createDB() {
 		return this.ws.db.createDatabase.bind(this)(...arguments);

@@ -3,10 +3,26 @@
 Gaia.DB is an online database package.
 
 ## Usage
+### Site
+**/management-accounts.html**
+
+Is for list of all accounts.
+
+**/userinfo.html?user=xxxx**
+- user `<string>` Username of an account.
+
+See account's info.
+
+**/register.html**
+
+Register an account.
+
 ### Server
 
-**Server(path)** [Class]
-- path `<string>` {Database folder path}
+**Server(path, settings)** [Class]
+- path `<string>` Database folder path
+- settings `<object>` Server settings
+  - secret `<string>` Server secret key.
 
 Create a server.
 
@@ -14,179 +30,175 @@ Create a server.
 
 Setup the server.
 
-**Server.run(port)** [AsyncFunction]
+**Server.run(app)** [AsyncFunction]
 
-- port `<number>` {Port you want to listen}
+- app `<number>/<httpServer>`
 
 Run the server. Note: Only run this after you run **Server.setup** function.
 
 ### Client
 
-**Client(settings)**
-- settings `<object>` {Client's settings}
-  - settings.ip `<string>` {Server's IP you want to connect}
-  - settings.port `<number>` {Server's Port you want to connect}
-  - settings.username `<string>` {Account's username you try to log as}
-  - settings.password `<string>` {Account's password you try to log as}
+**Client(settings)** [Class]
+- settings `<object>` Client's settings
+  - settings.ip `<string>` Server's IP you want to connect
+  - settings.port `<number>` Server's Port you want to connect
+  - settings.username `<string>` Account's username you try to log as
+  - settings.password `<string>` Account's password you try to log as
 
 Make client.
 
-**Client.main(callbacks)** [SyncFunction]
+**Client.setup(callbacks)** [Function]
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
-Prepare WebSocket connection then connect to the server.
+Setup WebSocket connection.
 
-**Client.login(callbacks)** [SyncFunction]
+**Client.login(callbacks)** [Function]
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
-Connect to the server.
+Connect to the server. Note: Only fire this after `Client.setup(...)`.
 
-**Client.createUser(callbacks)** [SyncFunction]
+**Client.createDB(databaseName, callbacks)** [Function]
+- databaseName `<string>` Database's name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
-
-Create the user account.
-
-**Client.createAccount(...)** [SyncFunction]
-<Same with `Client.createUser(...)`>
-
-**Client.deleteUser(callbacks)** [SyncFunction]
-- callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
-  
-Delete user account.
-
-**Client.createDB(databaseName, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
-- callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Create a database.
 
-**Client.deleteDB(databaseName, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
+**Client.deleteDB(databaseName, callbacks)** [Function]
+- databaseName `<string>` Database's name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Delete a database.
 
-**Client.createKey(databaseName, keyName, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
-- keyName `<string>` {Key's name}
+**Client.createKey(databaseName, keyName, callbacks)** [Function]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
  
 Create a key.
 
-**Client.deleteKey(databaseName, keyName, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
-- keyName `<string>` {Key's name}
+**Client.deleteKey(databaseName, keyName, callbacks)** [Function]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Delete a key.
 
-**Client.getKey(databaseName, keyName, keyPath, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
-- keyName `<string>` {Key's name}
-- keyPath `<string>` {Key's path}
+**Client.getKey(databaseName, keyName, keyPath, callbacks)** [Function]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+- keyPath `<string>` Key's path
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Get key's value.
 
-**Client.setKey(databaseName, keyName, keyValue, keyPath, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database's name}
-- keyName `<string>` {Key's name}
-- keyValue {Key's new value}
+**Client.setKey(databaseName, keyName, keyValue, keyPath, callbacks)** [Function]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+- keyValue Key's new value
 - keyPath `<string>`
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
-**Client.Database(databaseName, callbacks)** [SyncFunction]
-- databaseName `<string>` {Database Name}
+**Client.Database(databaseName, callbacks)** [Function]
+- databaseName `<string>` Database Name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Create database manager.
 
-**Client.Database.createDB(callbacks)** [SyncFunction]
+**Client.Database.createDB(callbacks)** [Function]
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Create the database.
 
-**Client.Database.deleteDB(callbacks)** [SyncFunction]
+**Client.Database.deleteDB(callbacks)** [Function]
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
 
 Delete the database.
 
-**Client.Database.setKey(keyName, keyValue, keyPath, callbacks)** [SyncFunction]
-- keyName `<string>` {Key's name}
-- keyValue {Key's new value}
+**Client.Database.setKey(keyName, keyValue, keyPath, callbacks)** [Function]
+- keyName `<string>` Key's name
+- keyValue Key's new value
 - keyPath `<string>`
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
   
 Set key's value.
 
-**Client.Database.getKey(keyName, keyPath, callbacks)** [SyncFunction]
-- keyName `<string>` {Key's name}
+**Client.Database.getKey(keyName, keyPath, callbacks)** [Function]
+- keyName `<string>` Key's name
 - keyPath `<string>`
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
   
 Get key's value.
 
-**Client.Database.deleteKey(keyName, callbacks)** [SyncFunction]
-- keyName `<string>` {Key's name}
+**Client.Database.deleteKey(keyName, callbacks)** [Function]
+- keyName `<string>` Key's name
 - callbacks `<object>`
-  - success `<function>` {Success callback}
-  - fail `<function>` {Fail callback}
+  - success `<function>` Success callback
+  - fail `<function>` Fail callback
   
 Delete a key.
 
-**Client.on(event, callback)** [SyncFunction]
-- event `<string>` {Event's name}
+**Client.on(event, callback)** [Function]
+- event `<string>` Event's name
 - callback `<function>`
 
 Register a callback to an event. You can check all events in `events.txt`.
 
-**Client.once(event, callback)** [SyncFunction]
-- event `<string>` {Event's name}
+**Client.once(event, callback)** [Function]
+- event `<string>` Event's name
 - callback `<function>`
 
 Register a callback to an event but only fired once. You can check all events in `events.txt`.
 
-**Client.off(event,id)** [SyncFunction]
-- event `<string>` {Event's name}
-- id {Callback's ID}
+**Client.off(event,id)** [Function]
+- event `<string>` Event's name
+- id Callback's ID
 
 Delete a callback from an event. You can check all events in `events.txt`.
 
 ## Example
 Check test folder.
 
+## Bugs
+- -
+
+## Changelogs
+v1.2.2
+- Fixed cannot login to the server after created an account.
+v1.2.3
+- Updated socket.io and socket.io-client to new version.
+v2.0.0
+- Added site plugin.
+
 ## Developers
-- Gaia#7541 [Discord]
+- Gaia#7541 [Discord] = Back-End/Markdown/Front-End
+- RaeedDoesGaming#6489 [Discord] = Front-End
+- Odd Stranger#7957 [Discord] = Back-End/Markdown
 
 ## Support Us
 - [Gaia's PayPal](https://paypal.me/nekomaru76)
@@ -196,6 +208,9 @@ Check test folder.
 - aurdev#0001 (Discord)
 - Ryan Dahl
 - Brendan Eich
+
+# Plugins
+- Site [https://localhost:port/]
 
 ## License
 MIT
