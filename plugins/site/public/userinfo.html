@@ -46,7 +46,6 @@
           if (info.code !== 200)
             return (box.innerHTML = `Error Code: ${info.code}.`);
 
-          info.data.datas["LOL"] = "ads";
           box.innerHTML = `<div class="text-center">
                           <h2>User Info</h2></div><br/>
                           User: ${user}<br />
@@ -65,12 +64,12 @@
                                         ["red", "purple", "green", "yellow"][
                                           Math.floor(Math.random() * 4)
                                         ]
-                                      } text-center" style="height: auto; width: auto;" onclick="alert('Coming Soon!');">${db}</button>`
+                                      } text-center btn" style="height: auto; width: auto;" onclick="alert('Coming Soon!');">${db}</button>`
                                   )
                                   .join(" ")
                               : "None."
                           }
-                          <button class="position-absolute bottom-0 end-0 db fw-bold" onclick="deleteUser()" style="background-color: #d9534f;">Delete User</button>`;
+                          <button class="position-absolute bottom-0 end-0 fw-bold btn btn-danger mb-3 mx-3" onclick="deleteUser()">Delete User</button>`;
 
           const show_password = document.querySelector(".show-password");
           const password = document.querySelector(".password");
@@ -89,7 +88,7 @@
     <style>
       html,
       body {
-        background-color: #0c0c0c;
+        background-color: rgba(13, 13, 14, 0.767);
         height: 100%;
         width: 100%;
         padding: 0;

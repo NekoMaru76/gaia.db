@@ -276,6 +276,12 @@ v2.1.1
 v2.1.2
 - Updated README.md
 
+v2.1.3
+- Fixed userinfo.html
+
+v2.1.4
+- Upgraded userinfo.html
+
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
 - RaeedDoesGaming#6489 [Discord] = Front-End
