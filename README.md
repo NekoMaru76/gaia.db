@@ -283,7 +283,7 @@ v2.1.3
 v2.1.4
 - Upgraded userinfo.html
 
-v2.1.5
+v2.1.5 & v2.1.6
 - Fixed Client.getKey.
 
 ## Developers
