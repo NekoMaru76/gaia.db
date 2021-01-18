@@ -1,6 +1,3 @@
-![Header](https://raw.githubusercontent.com/FrostyTheDumDum/gaia.db/main/header.png "Header")
-
-
 # Gaia.DB
 
 Gaia.DB is an online database package.
@@ -259,6 +256,7 @@ Delete a callback from an event. You can check all events in `events.txt`.
 Check test folder.
 
 ## Bugs
+- async functions are broken. Will fix it in v2.3.0
 
 ## Changelogs
 v1.2.2
@@ -284,6 +282,9 @@ v2.1.3
 
 v2.1.4
 - Upgraded userinfo.html
+
+v2.1.5
+- Fixed Client.getKey.
 
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
