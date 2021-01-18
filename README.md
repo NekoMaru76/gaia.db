@@ -260,14 +260,21 @@ Check test folder.
 ## Changelogs
 v1.2.2
 - Fixed cannot login to the server after created an account.
+
 v1.2.3
 - Updated socket.io and socket.io-client to new version.
+
 v2.0.0
 - Added site plugin.
+
 v2.1.0
 - Added async functions those return promises.
+
 v2.1.1
 - Added a few functions explanation into readme.
+
+v2.1.2
+- Updated README.md
 
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
