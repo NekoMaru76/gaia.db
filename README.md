@@ -1,4 +1,4 @@
-![Header](https://github.com/FrostyTheDumDum/gaia.db/blob/master/header.png?raw=true "Header")
+![Header](https://raw.githubusercontent.com/FrostyTheDumDum/gaia.db/main/header.png "Header")
 
 
 # Gaia.DB
