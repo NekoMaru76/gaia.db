@@ -283,8 +283,8 @@ v2.1.3
 v2.1.4
 - Upgraded userinfo.html
 
-v2.1.5 & v2.1.6
-- Fixed Client.getKey.
+v2.1.5 ~ v2.1.7
+- Fixed Client.getKey & Client.setKey.
 
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
