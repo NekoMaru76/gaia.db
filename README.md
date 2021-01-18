@@ -61,6 +61,12 @@ Setup WebSocket connection.
 
 Connect to the server. Note: Only fire this after `Client.setup(...)`.
 
+**Client.setup.async()** [Function]
+Setup WebSocket connection.
+
+**Client.login.async()** [Function]
+Connect to the server. Note: Only fire this after `Client.setup(...)`.
+
 **Client.createDB(databaseName, callbacks)** [Function]
 - databaseName `<string>` Database's name
 - callbacks `<object>`
@@ -260,6 +266,8 @@ v2.0.0
 - Added site plugin.
 v2.1.0
 - Added async functions those return promises.
+v2.1.1
+- Added a few functions explanation into readme.
 
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
