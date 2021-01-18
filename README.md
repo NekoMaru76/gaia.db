@@ -61,6 +61,12 @@ Setup WebSocket connection.
 
 Connect to the server. Note: Only fire this after `Client.setup(...)`.
 
+**Client.setup.async()** [Function]
+Setup WebSocket connection.
+
+**Client.login.async()** [Function]
+Connect to the server. Note: Only fire this after `Client.setup(...)`.
+
 **Client.createDB(databaseName, callbacks)** [Function]
 - databaseName `<string>` Database's name
 - callbacks `<object>`
@@ -113,6 +119,45 @@ Get key's value.
 - callbacks `<object>`
   - success `<function>` Success callback
   - fail `<function>` Fail callback
+  
+Set key's value.
+  
+**Client.createDB.async(databaseName)** [AsyncFunction]
+- databaseName `<string>` Database's name
+
+Create a database.
+
+**Client.deleteDB.async(databaseName)** [AsyncFunction]
+- databaseName `<string>` Database's name
+
+Delete a database.
+
+**Client.createKey(databaseName, keyName)** [AsyncFunction]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+ 
+Create a key.
+
+**Client.deleteKey(databaseName, keyName)** [AsyncFunction]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+
+Delete a key.
+
+**Client.getKey(databaseName, keyName, keyPath)** [AsyncFunction]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+- keyPath `<string>` Key's path
+
+Get key's value.
+
+**Client.setKey(databaseName, keyName, keyValue, keyPath)** [AsyncFunction]
+- databaseName `<string>` Database's name
+- keyName `<string>` Key's name
+- keyValue Key's new value
+- keyPath `<string>`
+
+Set key's value.
 
 **Client.Database(databaseName, callbacks)** [Function]
 - databaseName `<string>` Database Name
@@ -163,6 +208,32 @@ Get key's value.
   
 Delete a key.
 
+**Client.Database.createDB.async()** [ASyncFunction]
+
+Create the database.
+
+**Client.Database.deleteDB.async()** [AsyncFunction]
+
+Delete the database.
+
+**Client.Database.setKey.async(keyName, keyValue, keyPath)** [AsyncFunction]
+- keyName `<string>` Key's name
+- keyValue Key's new value
+- keyPath `<string>`
+  
+Set key's value.
+
+**Client.Database.getKey.async(keyName, keyPath)** [AsyncFunction]
+- keyName `<string>` Key's name
+- keyPath `<string>`
+
+Get key's value.
+
+**Client.Database.deleteKey.async(keyName)** [AsyncFunction]
+- keyName `<string>` Key's name
+
+Delete a key.
+
 **Client.on(event, callback)** [Function]
 - event `<string>` Event's name
 - callback `<function>`
@@ -185,15 +256,25 @@ Delete a callback from an event. You can check all events in `events.txt`.
 Check test folder.
 
 ## Bugs
-- -
 
 ## Changelogs
 v1.2.2
 - Fixed cannot login to the server after created an account.
+
 v1.2.3
 - Updated socket.io and socket.io-client to new version.
+
 v2.0.0
 - Added site plugin.
+
+v2.1.0
+- Added async functions those return promises.
+
+v2.1.1
+- Added a few functions explanation into readme.
+
+v2.1.2
+- Updated README.md
 
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End

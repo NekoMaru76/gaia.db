@@ -56,4 +56,52 @@ class Client extends Events {
 	}
 };
 
+Client.prototype.setup.async = function() {
+  return new Promise((resolve, reject) => {
+    this.setup({ success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.createDB.async = function(dbName) {
+  return new Promise((resolve, reject) => {
+    this.createDB(dbName, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.deleteDB.async = function(dbName) {
+  return new Promise((resolve, reject) => {
+    this.deleteDB(dbName, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.createKey.async = function(dbName, keyName) {
+  return new Promise((resolve, reject) => {
+    this.createKey(dbName, keyName, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.deleteKey.async = function(dbName, keyName) {
+  return new Promise((resolve, reject) => {
+    this.deleteKey(dbName, keyName, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.setKey.async = function(dbName, keyName, keyValue, keyPath) {
+  return new Promise((resolve, reject) => {
+    this.setKey(dbName, keyName, keyValue, keyPath, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.getKey.async = function(dbName, keyName, keyPath) {
+  return new Promise((resolve, reject) => {
+    this.getKey(dbName, keyName, keyPath, { success: resolve, fail: reject });
+  });
+};
+
+Client.prototype.login.async = function() {
+  return new Promise((resolve, reject) => {
+    this.login({ success: resolve, fail: reject });
+  });
+};
+
 module.exports = Client;

@@ -1,6 +1,6 @@
 {
   "name": "gaia.db",
-  "version": "2.0.0",
+  "version": "2.1.2",
   "description": "Gaia.DB is an online database package.",
   "main": "index.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "express": "^4.17.1",
     "graceful-fs": "^4.2.4",
     "lodash": "^4.17.20",
-    "socket.io": "^3.0.5",
-    "socket.io-client": "^3.0.5"
+    "socket.io": "^3.1.0",
+    "socket.io-client": "^3.1.0"
   },
   "directories": {
     "lib": "lib",
@@ -40,7 +40,8 @@
     "online-database",
     "online",
     "websocket",
-    "easy-setup"
+    "easy-setup",
+    "promise"
   ],
   "bugs": {
     "url": "https://github.com/NekoMaru76/gaia.db/issues"
