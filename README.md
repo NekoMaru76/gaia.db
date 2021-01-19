@@ -293,6 +293,9 @@ v2.1.9
 - Renamed all async functions.
 - Fixed getKey for not throwing error.
 
+v2.2.0
+- Fixed name typo.
+
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
 - RaeedDoesGaming#6489 [Discord] = Front-End
