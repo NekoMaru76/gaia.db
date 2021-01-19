@@ -64,12 +64,12 @@ class Client extends Events {
 			this.ws.db.createDatabase.bind(this)(dbName, { success: resolve, fail: reject });
 		});
 	}
-	deleteDB(dbName) {
+	deleteDBAsync(dbName) {
 		return new Promise((resolve, reject) => {
 			this.ws.db.deleteDatabase.bind(this)(dbName, { success: resolve, fail: reject });
 		});
 	}
-	createKey(dbName, keyName) {
+	createKeyAsync(dbName, keyName) {
 		return new Promise((resolve, reject) => {
 			this.ws.db.createKey.bind(this)(dbName, keyName, { success: resolve, fail: reject });
 		});
