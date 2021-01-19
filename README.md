@@ -296,6 +296,9 @@ v2.1.9
 v2.2.0
 - Fixed name typo.
 
+v2.2.1
+- Fixed createKey for not throwing error when a key is already exists.
+
 ## Developers
 - Gaia#7541 [Discord] = Back-End/Markdown/Front-End
 - RaeedDoesGaming#6489 [Discord] = Front-End
