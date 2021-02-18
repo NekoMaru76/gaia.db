@@ -1,6 +1,6 @@
 {
   "name": "gaia.db",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Gaia.DB is an online database package.",
   "main": "index.js",
   "scripts": {

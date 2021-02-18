@@ -54,6 +54,9 @@ class Client extends Events {
 	login() {
 		return this.ws.db.login.bind(this)(...arguments);
 	}
+	getKeys() {
+		return this.ws.db.getKeys.bind(this)(...arguments);
+	}
 	setupAsyncfunction() {
 		return new Promise((resolve, reject) => {
 			this.ws.db.setup.bind(this)({ success: resolve, fail: reject });
@@ -87,6 +90,11 @@ class Client extends Events {
 	getKeyAsync(dbName, keyName, keyPath) {
 		return new Promise((resolve, reject) => {
 			this.ws.db.getKey.bind(this)(dbName, keyName, keyPath, { success: resolve, fail: reject });
+		});
+	}
+	getKeysAsync(dbName) {
+		return new Promise((resolve, reject) => {
+			this.ws.db.getKeys.bind(this)(dbName, { success: resolve, fail: reject });
 		});
 	}
 	loginAsync() {
